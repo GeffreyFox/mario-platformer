@@ -11,12 +11,12 @@ public class Timer : MonoBehaviour
     [Range(0,350)]
     [SerializeField] private float timer;
 
-    private static bool timerIsRunning = true;
+    public static bool GameOver = false;
     
-
+    
     void Update()
     {
-        if (timerIsRunning)
+        if (!GameOver)
         {
             if (timer > 0)
             {
@@ -26,10 +26,9 @@ public class Timer : MonoBehaviour
             
             else
             {
-                timerIsRunning = false;
+                GameOver = true;
                 gameOverGO.SetActive(true);
             }
         }
-        
     }
 }

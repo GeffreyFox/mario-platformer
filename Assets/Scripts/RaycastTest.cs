@@ -16,16 +16,16 @@ public class RaycastTest : MonoBehaviour
         {
             Ray ray = camera.ScreenPointToRay (Input.mousePosition);
             if (Physics.Raycast (ray, out hit, 100)) {
-                var go = hit.transform.gameObject;
+                var objectHit = hit.transform.gameObject;
                 
-                if (go.CompareTag("Brick"))
-                    Destroy(go);
+                if (objectHit.CompareTag("Brick"))
+                    Destroy(objectHit);
                 
-                else if (go.CompareTag("Mystery"))
+                else if (objectHit.CompareTag("Mystery"))
                 {
                     nbCoins++;
                     coins.text = "x" + (nbCoins < 10 ? "0" + nbCoins : nbCoins);
-                    MysteryBlock.Instance.OnHit(go.transform.position);
+                    MysteryBlock.Instance.OnHit(objectHit.transform.position);
                 }
             }
         }

@@ -1,29 +1,28 @@
+using System;
 using UnityEngine;
 
 public class PlayerHandler : MonoBehaviour
 {
-    private bool isJumping = false;
-    private Rigidbody rb;
-
+    [SerializeField] private GameObject winDisplay;
+    private Camera camera;
     private RaycastHit hit;
 
     private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+        => camera = Camera.main;
 
     private void FixedUpdate()
     {
+        if (Timer.GameOver)
+            return;
+        
         var movement = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(movement, 0, 0) * 0.2f;
+        camera.transform.position += new Vector3(movement, 0, 0) * 0.2f;
 
-        /*if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up) * 10, out hit))
+        if (camera.transform.position.x > 205)
         {
-            Debug.Log(hit.collider.gameObject.name);
+            winDisplay.SetActive(true);
+            Timer.GameOver = true;
         }
-        
-        
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.up), Color.green);*/
     }
     
 }
