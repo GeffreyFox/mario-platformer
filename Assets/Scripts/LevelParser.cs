@@ -9,6 +9,10 @@ public class LevelParser : MonoBehaviour
     public GameObject brickPrefab;
     public GameObject questionBoxPrefab;
     public GameObject stonePrefab;
+    public GameObject smallPipePrefab;
+    public GameObject mediumPipePrefab;
+    public GameObject largePipePrefab;
+    public GameObject flagPrefab;
     public Transform environmentRoot;
 
     // --------------------------------------------------------------------------
@@ -78,6 +82,27 @@ public class LevelParser : MonoBehaviour
                     // brick
                     case 'b':
                         Instantiate(brickPrefab, position, Quaternion.identity, environmentRoot);
+                        break;
+                    
+                    // small pipe
+                    case '1':    
+                        Instantiate(smallPipePrefab, smallPipePrefab.transform.position + position, Quaternion.identity, environmentRoot);
+                        break;
+                    
+                    // medium pipe
+                    case '2':    
+                        Instantiate(mediumPipePrefab, mediumPipePrefab.transform.position + position, Quaternion.identity, environmentRoot);
+                        break;
+                    
+                    
+                    // large pipe
+                    case '3':    
+                        Instantiate(largePipePrefab, largePipePrefab.transform.position + position, Quaternion.identity, environmentRoot);
+                        break;
+                    
+                    // flag
+                    case 'f':    
+                        Instantiate(flagPrefab, flagPrefab.transform.position + position, flagPrefab.transform.rotation, environmentRoot);
                         break;
                 }
             }

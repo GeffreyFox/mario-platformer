@@ -12,8 +12,11 @@ public class Timer : MonoBehaviour
     [SerializeField] private float timer;
 
     public static bool GameOver = false;
-    
-    
+    public static Timer Instance;
+
+    private void Awake()
+        => Instance = this;
+
     void Update()
     {
         if (!GameOver)
@@ -30,5 +33,11 @@ public class Timer : MonoBehaviour
                 gameOverGO.SetActive(true);
             }
         }
+    }
+
+    public void OnWin()
+    {
+        GameOver = true;
+        gameOverGO.SetActive(true);
     }
 }

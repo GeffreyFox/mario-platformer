@@ -4,17 +4,17 @@ using UnityEngine;
 public class MysteryBlock : MonoBehaviour
 {
     [SerializeField] private GameObject coinGO;
-    
-    public static MysteryBlock Instance;
-    
+    [SerializeField] private int coinsHeld = 1;
+
     private Material material;
     private bool coroutineIsRunning;
     private float time = 0.4f;
     private float currentOffset = 0;
+    
+    private Coroutine coroutine;
 
     private void Awake()
     {
-        Instance = this;
         material = GetComponent<MeshRenderer>().material;
         coroutineIsRunning = false;
     }
@@ -24,7 +24,7 @@ public class MysteryBlock : MonoBehaviour
         if (!coroutineIsRunning)
         {
             coroutineIsRunning = true;
-            StartCoroutine(MysteryBlockAnimation());
+            coroutine = StartCoroutine(MysteryBlockAnimation());
         }
     }
 
@@ -48,9 +48,22 @@ public class MysteryBlock : MonoBehaviour
         Destroy(coin);
     }
 
-    internal void OnHit(Vector3 position)
+    internal int OnHit(Vector3 position)
     {
+        if (coinsHeld == 0) return 0;
+
         var coin = Instantiate(coinGO, position + new Vector3(0, 1f, 0), Quaternion.identity);
         StartCoroutine(CoinCollectionAnimation(coin));
+        coinsHeld--;
+
+        if (coinsHeld == 0)
+        {
+            if (coroutineIsRunning)
+                StopCoroutine(coroutine);
+            coroutineIsRunning = true;
+            material.mainTextureOffset = new Vector2(0, -0.6f);
+        }
+        
+        return 1;
     }
 }
