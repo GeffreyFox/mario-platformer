@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2652198492393551390}
   - component: {fileID: 2652198492393551389}
   - component: {fileID: 2652198492393551388}
+  - component: {fileID: 2276686817369721220}
   m_Layer: 6
-  m_Name: Void
+  m_Name: Water
   m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,9 +100,21 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2276686817369721220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2652198492393551387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b19c9da4e3405245bd80e83c5f49b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

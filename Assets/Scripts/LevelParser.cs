@@ -9,6 +9,7 @@ public class LevelParser : MonoBehaviour
     public GameObject brickPrefab;
     public GameObject questionBoxPrefab;
     public GameObject stonePrefab;
+    public GameObject waterPrefab;
     public GameObject smallPipePrefab;
     public GameObject mediumPipePrefab;
     public GameObject largePipePrefab;
@@ -103,6 +104,11 @@ public class LevelParser : MonoBehaviour
                     // flag
                     case 'f':    
                         Instantiate(flagPrefab, flagPrefab.transform.position + position, flagPrefab.transform.rotation, environmentRoot);
+                        break;
+                    
+                    // water
+                    case 'w':
+                        Instantiate(waterPrefab, position, Quaternion.identity, environmentRoot);
                         break;
                 }
             }

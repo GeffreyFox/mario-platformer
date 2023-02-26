@@ -437,11 +437,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6568559d6661b4eba05e67f1401a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filename: Test
+  filename: Custom
   rockPrefab: {fileID: 2652198492393551387, guid: 981bb3414d36746408a1c5ee5244f1b1, type: 3}
   brickPrefab: {fileID: 2652198492393551387, guid: d94221691cf23ce429136e2be05d002b, type: 3}
   questionBoxPrefab: {fileID: 2652198492393551387, guid: 97d0fe6850ab3714eaa654f26f4ca9f8, type: 3}
   stonePrefab: {fileID: 2652198492393551387, guid: e2bf2963d586ea44ea04e84c9ae1fa8e, type: 3}
+  waterPrefab: {fileID: 2652198492393551387, guid: 23a8144c3f9f6844e8a8dd384ef68cf0, type: 3}
   smallPipePrefab: {fileID: 8906585624000583758, guid: 45c15c06b8a8c2c4e841b296eaf1c249, type: 3}
   mediumPipePrefab: {fileID: 6231243778539047868, guid: 7051b6a5f29a0294ea724b546c5d2404, type: 3}
   largePipePrefab: {fileID: 165252360725067104, guid: b68527a673308ca41b4f3cdd2ae50edd, type: 3}
@@ -1028,7 +1029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &859565990
 SpriteRenderer:
   m_ObjectHideFlags: 0
