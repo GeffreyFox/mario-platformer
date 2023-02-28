@@ -42,7 +42,7 @@ public class PlayerHandler : MonoBehaviour
         collider = GetComponent<Collider>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         animator.SetFloat(Speed, rb.velocity.magnitude);
         animator.SetBool(Jumping, !isGrounded);
@@ -65,10 +65,10 @@ public class PlayerHandler : MonoBehaviour
             return;
         }
 
-        
+        // sprint
         if (Input.GetKeyDown(KeyCode.LeftShift))
             maxSpeed = 8;
-        
+        // walk
         if (Input.GetKeyUp(KeyCode.LeftShift))
             maxSpeed = 5;
         
@@ -81,9 +81,11 @@ public class PlayerHandler : MonoBehaviour
         // speed x axis
         rb.velocity += movement * Vector3.right * Time.deltaTime * acceleration;
 
+        // check if mario touches the ground
         float halfHeight = collider.bounds.extents.y + 0.03f;
         isGrounded = Physics.Raycast(transform.position, Vector3.down, halfHeight);
 
+        // clamp the velocity of mario
         Vector3 velocity = rb.velocity;
         velocity = new Vector3(Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed), velocity.y, velocity.z);
         rb.velocity = velocity;

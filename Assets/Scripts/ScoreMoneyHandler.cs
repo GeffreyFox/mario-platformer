@@ -58,8 +58,11 @@ public class ScoreMoneyHandler : MonoBehaviour
 
     public void OnMysteryBlockHitted(GameObject mystery)
     {
+        int currentCoins = nbCoins;
         nbCoins += mystery.GetComponent<MysteryBlock>().OnHit(mystery.transform.position);
         coins.text = "x" + (nbCoins < 10 ? "0" + nbCoins : nbCoins);
+
+        if (currentCoins == nbCoins) return;
         
         score += 100;
         scoreText.text = "MARIO\n" + ZeroCount() + score;
